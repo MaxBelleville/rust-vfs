@@ -6,5 +6,3 @@ pub mod embedded;
 pub mod memory;
 pub mod overlay;
 pub mod physical;
-#[cfg(feature = "zip")]
-pub mod zip;
