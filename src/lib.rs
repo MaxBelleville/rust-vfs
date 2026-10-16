@@ -74,5 +74,7 @@ pub use impls::altroot::AltrootFS;
 pub use impls::embedded::EmbeddedFS;
 pub use impls::memory::MemoryFS;
 pub use impls::overlay::OverlayFS;
+#[cfg(feature = "zip")]
+pub use impls::zip::ZipFS;
 pub use impls::physical::PhysicalFS;
 pub use path::*;
