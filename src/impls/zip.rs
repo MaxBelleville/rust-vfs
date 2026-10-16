@@ -53,7 +53,7 @@ struct SeekableZipFile {
 
     #[borrows(mut archive)]
     #[not_covariant]
-    zip_file: ZipFile<'this>,
+    zip_file: ZipFile<'this, Box<dyn SeekAndReadAndSend>>,
 }
 
 impl Read for SeekableZipFile {
@@ -85,7 +85,7 @@ impl FileSystem for ZipFS {
         let size = archive.len();
         for i in 0..size {
             let file = archive.by_index(i)?;
-            if let Some(rest) = file.name().strip_prefix(&resolved_path) {
+            if let Some(rest) = file.name()?.strip_prefix(&resolved_path) {
                 if rest.is_empty() {
                     continue;
                 }
