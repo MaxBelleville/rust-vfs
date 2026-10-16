@@ -247,7 +247,6 @@ mod tests {
             std::io::copy(&mut file, &mut zip).unwrap();
         }
         zip.finish().unwrap();
-        drop(zip);
         let data = LargeData {
             data: Arc::new(buf),
         };
